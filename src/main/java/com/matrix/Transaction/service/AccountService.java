@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public interface AccountService {
-    List<AccountDTO> getAccounts(Long id,Boolean isActive);
+    List<AccountDTO> getAccounts(Long id,Boolean onlyActive);
 
     AccountDTO createAccount(Long id);
 

@@ -12,18 +12,21 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 import java.util.List;
 
+@Slf4j
 @EnableScheduling
+@Configuration
 @EnableAsync
 @RequiredArgsConstructor
 public class Scheduler {
 
     private final TransactionService transactionService;
 
-    @Scheduled(cron = "0 0 1 * * ?", zone = "Asia/Baku")
+    @Scheduled(cron = "0 18 19 * * ?", zone = "Asia/Baku")
     public void scheduleCron(){
         List<TransactionDTO> transactions = transactionService.getTransactions();
         for(TransactionDTO transactionDTO : transactions){
             if(transactionDTO.getTransactionStatus()==TransactionStatus.PENDING){
+                log.info("Scheduler triggered");
                 transactionService.changePaymentStatus(transactionDTO.getId(),TransactionStatus.SUCCESS);
             }
         }

@@ -16,8 +16,8 @@ public class AccountController {
     private final AccountService accountService;
 
     @GetMapping("/{id}")
-    public List<AccountDTO> getAccounts(@PathVariable Long id,@RequestParam(required = false) Boolean isActive) {
-        return accountService.getAccounts(id,isActive);
+    public List<AccountDTO> getAccounts(@PathVariable Long id,@RequestParam(required = false) Boolean onlyActive) {
+        return accountService.getAccounts(id,onlyActive);
     }
 
     @PostMapping("/{id}")

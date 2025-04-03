@@ -1,5 +1,6 @@
 package com.matrix.Transaction.service.impl;
 
+import com.matrix.Transaction.exception.CustomerNotFound;
 import com.matrix.Transaction.mapper.CustomerMapper;
 import com.matrix.Transaction.model.dto.CustomerAddRequestDTO;
 import com.matrix.Transaction.model.dto.CustomerDTO;
@@ -27,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO getCustomer(Long id) {
-        return customerMapper.customerToCustomerDTO(customerRepository.findById(id).orElseThrow(IllegalArgumentException::new));
+        return customerMapper.customerToCustomerDTO(customerRepository.findById(id).orElseThrow(()->new CustomerNotFound(("Customer with id " +id+" not found"))));
     }
 
     @Override
@@ -39,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO updateCustomer(Long id, CustomerAddRequestDTO customer) {
-        Customer customerEntity = customerRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+        Customer customerEntity = customerRepository.findById(id).orElseThrow(()->new CustomerNotFound("Customer with id " +id+" not found"));
         Customer newCustomer = customerMapper.updateCustomer(customer, customerEntity);
         return customerMapper.customerToCustomerDTO(customerRepository.save(newCustomer));
     }
