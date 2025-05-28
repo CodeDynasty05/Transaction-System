@@ -1,22 +1,21 @@
 package com.matrix.Transaction.service;
 
-import com.matrix.Transaction.model.dto.CustomerAddRequestDTO;
-import com.matrix.Transaction.model.dto.CustomerDTO;
+import com.matrix.Transaction.model.dto.CustomerAddRequestDto;
+import com.matrix.Transaction.model.dto.CustomerDto;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Service
 public interface CustomerService {
 
-    List<CustomerDTO> getCustomers();
+    List<CustomerDto> getCustomers();
 
-    CustomerDTO getCustomer(Long id);
+    CustomerDto getCustomer(Long id);
 
-    CustomerDTO createCustomer(CustomerAddRequestDTO customer);
+    CustomerDto createCustomer(CustomerAddRequestDto customer);
 
-    CustomerDTO updateCustomer(Long id, CustomerAddRequestDTO customer);
+    CustomerDto updateCustomer(Long id, CustomerAddRequestDto customer);
 
     void deleteCustomer(Long id);
 }

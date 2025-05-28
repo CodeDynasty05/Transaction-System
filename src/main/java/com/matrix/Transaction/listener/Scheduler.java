@@ -1,6 +1,6 @@
 package com.matrix.Transaction.listener;
 
-import com.matrix.Transaction.model.dto.TransactionDTO;
+import com.matrix.Transaction.model.dto.TransactionDto;
 import com.matrix.Transaction.model.entity.TransactionStatus;
 import com.matrix.Transaction.service.TransactionService;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +23,8 @@ public class Scheduler {
 
     @Scheduled(cron = "0 18 19 * * ?", zone = "Asia/Baku")
     public void scheduleCron(){
-        List<TransactionDTO> transactions = transactionService.getTransactions();
-        for(TransactionDTO transactionDTO : transactions){
+        List<TransactionDto> transactions = transactionService.getTransactions();
+        for(TransactionDto transactionDTO : transactions){
             if(transactionDTO.getTransactionStatus()==TransactionStatus.PENDING){
                 log.info("Scheduler triggered");
                 transactionService.changePaymentStatus(transactionDTO.getId(),TransactionStatus.SUCCESS);

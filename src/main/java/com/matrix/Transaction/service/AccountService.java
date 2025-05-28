@@ -1,24 +1,22 @@
 package com.matrix.Transaction.service;
 
-import com.matrix.Transaction.model.dto.AccountDTO;
+import com.matrix.Transaction.model.dto.AccountDto;
 import com.matrix.Transaction.model.entity.Account;
-import com.matrix.Transaction.model.entity.AccountStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Service
 public interface AccountService {
-    List<AccountDTO> getAccounts(Long id,Boolean onlyActive);
+    List<AccountDto> getAccounts(Long id, Boolean onlyActive);
 
-    AccountDTO createAccount(Long id);
+    AccountDto createAccount(Long id);
 
-    AccountDTO changeStatus(String accountNumber);
+    AccountDto changeStatus(String accountNumber);
 
-    AccountDTO increaseAccountBalance(Account account, Double amount);
+    AccountDto increaseAccountBalance(Account account, Double amount);
 
-    AccountDTO decreaseAccountBalance(Account account, Double amount);
+    AccountDto decreaseAccountBalance(Account account, Double amount);
 
     void deleteAccount(String accountNumber);
 }

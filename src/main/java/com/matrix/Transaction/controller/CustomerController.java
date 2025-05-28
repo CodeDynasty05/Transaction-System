@@ -1,7 +1,7 @@
 package com.matrix.Transaction.controller;
 
-import com.matrix.Transaction.model.dto.CustomerAddRequestDTO;
-import com.matrix.Transaction.model.dto.CustomerDTO;
+import com.matrix.Transaction.model.dto.CustomerAddRequestDto;
+import com.matrix.Transaction.model.dto.CustomerDto;
 import com.matrix.Transaction.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -15,22 +15,22 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @GetMapping
-    public List<CustomerDTO> getCustomers() {
+    public List<CustomerDto> getCustomers() {
         return customerService.getCustomers();
     }
 
     @GetMapping("/{id}")
-    private CustomerDTO getCustomer(@PathVariable Long id) {
+    private CustomerDto getCustomer(@PathVariable Long id) {
         return customerService.getCustomer(id);
     }
 
     @PostMapping
-    private CustomerDTO createCustomer(@RequestBody CustomerAddRequestDTO customer) {
+    private CustomerDto createCustomer(@RequestBody CustomerAddRequestDto customer) {
         return customerService.createCustomer(customer);
     }
 
     @PutMapping("/{id}")
-    private CustomerDTO updateCustomer(@PathVariable Long id, @RequestBody CustomerAddRequestDTO customer) {
+    private CustomerDto updateCustomer(@PathVariable Long id, @RequestBody CustomerAddRequestDto customer) {
         return customerService.updateCustomer(id,customer);
     }
 

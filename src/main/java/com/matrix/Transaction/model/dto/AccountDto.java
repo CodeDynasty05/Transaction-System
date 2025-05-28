@@ -8,7 +8,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class AccountDTO {
+public class AccountDto {
     private String accountNumber;
     private Double balance;
     @Enumerated(EnumType.STRING)

@@ -1,7 +1,7 @@
 package com.matrix.Transaction.service;
 
-import com.matrix.Transaction.model.dto.TransactionAddRequestDTO;
-import com.matrix.Transaction.model.dto.TransactionDTO;
+import com.matrix.Transaction.model.dto.TransactionAddRequestDto;
+import com.matrix.Transaction.model.dto.TransactionDto;
 import com.matrix.Transaction.model.entity.TransactionStatus;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +10,11 @@ import java.util.List;
 @Service
 public interface TransactionService {
 
-    List<TransactionDTO> getTransactions();
+    List<TransactionDto> getTransactions();
 
-    List<TransactionDTO> getAccountTransactions(String accountNumber);
+    List<TransactionDto> getAccountTransactions(String accountNumber);
 
-    TransactionDTO addTransaction(TransactionAddRequestDTO transactionAddRequestDTO);
+    TransactionDto addTransaction(TransactionAddRequestDto transactionAddRequestDTO);
 
-    TransactionDTO changePaymentStatus(Long transactionId, TransactionStatus status);
+    TransactionDto changePaymentStatus(Long transactionId, TransactionStatus status);
 }

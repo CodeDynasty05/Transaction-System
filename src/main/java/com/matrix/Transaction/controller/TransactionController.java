@@ -1,7 +1,7 @@
 package com.matrix.Transaction.controller;
 
-import com.matrix.Transaction.model.dto.TransactionAddRequestDTO;
-import com.matrix.Transaction.model.dto.TransactionDTO;
+import com.matrix.Transaction.model.dto.TransactionAddRequestDto;
+import com.matrix.Transaction.model.dto.TransactionDto;
 import com.matrix.Transaction.model.entity.TransactionStatus;
 import com.matrix.Transaction.service.TransactionService;
 import lombok.RequiredArgsConstructor;
@@ -16,22 +16,22 @@ public class TransactionController {
     private final TransactionService transactionService;
 
     @GetMapping
-    private List<TransactionDTO> getTransactions(){
+    private List<TransactionDto> getTransactions(){
         return transactionService.getTransactions();
     }
 
     @GetMapping("/{accountNumber}")
-    private List<TransactionDTO> getAccountTransactions(@PathVariable String accountNumber){
+    private List<TransactionDto> getAccountTransactions(@PathVariable String accountNumber){
         return transactionService.getAccountTransactions(accountNumber);
     }
 
     @PostMapping
-    private TransactionDTO createTransaction(@RequestBody TransactionAddRequestDTO transactionAddRequestDTO){
+    private TransactionDto createTransaction(@RequestBody TransactionAddRequestDto transactionAddRequestDTO){
         return transactionService.addTransaction(transactionAddRequestDTO);
     }
 
     @PutMapping("/{transactionId}")
-    private TransactionDTO changePaymentStatus(@PathVariable Long transactionId,@RequestParam TransactionStatus transactionStatus){
+    private TransactionDto changePaymentStatus(@PathVariable Long transactionId, @RequestParam TransactionStatus transactionStatus){
         return transactionService.changePaymentStatus(transactionId,transactionStatus);
     }
 }

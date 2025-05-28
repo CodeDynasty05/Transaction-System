@@ -7,7 +7,7 @@ import com.matrix.Transaction.model.entity.TransactionType;
 import lombok.Data;
 
 @Data
-public class TransactionDTO {
+public class TransactionDto {
     private Long id;
     private Double amount;
     private TransactionType transactionType;
